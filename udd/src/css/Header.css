@@ -1,0 +1,292 @@
+.header {
+  transition: height 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.site__header {
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 2.5rem 0 0;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: flex-end; */
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header__branding {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo,
+.mini-header__logo {
+  margin-right: 2rem;
+}
+
+.header__logo img {
+  display: block;
+  max-height: 50px;
+  width: 367;
+  height: 85;
+}
+
+.header__navigation {
+  position: relative;
+  display: flex;
+  top: auto;
+  width: auto;
+  height: auto;
+  flex-direction: row;
+  flex-grow: 1;
+  /* align-items: flex-end; */
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  /* margin-bottom: 1rem; */
+  /* margin-left: 1rem; */
+  background: none;
+  transform: none;
+  margin-bottom: 1.5rem;
+  margin-left: 0;
+}
+
+.menu a {
+  transform: translate3d(0, 0.1em, 0);
+}
+
+.secondary-menu__toggle a,
+.mini-header__mini-toggle a {
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.125rem;
+}
+
+/* 박스 애니메이션 */
+@keyframes expand {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 12rem; /* 박스의 최종 높이 설정 */
+    opacity: 1;
+  }
+}
+/* 박스 애니메이션 */
+@keyframes opacity {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+/* 박스 애니메이션 */
+@keyframes opacitys {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 박스 역순 애니메이션 */
+@keyframes collapse {
+  from {
+    height: 12rem;
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+/* tools를 클릭했을 때 나오는 토글 */
+.secondary-menu {
+  background-color: #000;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  padding: 1rem 0;
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  z-index: 100000;
+  /* animation: collapse 0.5s ease forwards; */
+  transition: opacity 0.5s, transform 0.5s; /* 부드러운 전환 효과를 위한 추가 */
+  transform: scaleY(0); /* 축소 상태 */
+  transform-origin: top; /* 변환의 기준점을 위쪽으로 설정 */
+}
+@media screen and (min-width: 783px) {
+  /* tools를 클릭했을 때 나오는 토글 */
+  .secondary-menu {
+    position: absolute;
+    top: 67px;
+    right: 0;
+  }
+}
+
+/* tools 버튼 클릭 시 나오는 메뉴 확장 */
+.show-menu {
+  height: auto; /* 또는 실제 높이를 px 단위로 지정 */
+  opacity: 1;
+  transform: scaleY(1); /* 원래 크기로 확장 */
+  transition-delay: 0.5s; /* 내용이 확장되기 시작할 때까지 지연 */
+}
+
+/* tools 버튼 클릭 시 메뉴 접힘 */
+.off-menu {
+  height: 0;
+  opacity: 0;
+  transform: scaleY(0); /* 축소 상태 */
+  transition-delay: 0s; /* 바로 시작 */
+}
+
+/* 박스 확장 시 */
+.show-menu,
+.mini-show-menu {
+  animation: expand 0.7s ease forwards;
+}
+.off-menu,
+.mini-off-menu {
+  animation: collapse 0.7s ease forwards;
+}
+
+.show-menu li,
+.mini-show-menu li {
+  padding: 0.5rem 0;
+  opacity: 1; /* 초기에는 자식 요소들이 보이지 않게 합니다.*/
+  transition: opacity 0.5s ease 0.7s; /* 투명도 변화에 대한 전환 효과를 추가합니다.*/
+}
+
+.off-menu li,
+.mini-off-menu li {
+  /* padding: 0.5rem 0; */
+  opacity: 0; /* 초기에는 자식 요소들이 보이지 않게 합니다. */
+  transition: opacitys 0.5s ease 0.7s; /* 투명도 변화에 대한 전환 효과를 추가합니다.*/
+}
+
+.secondary-menu li a,
+.mini-secondary-menu li a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  display: block;
+}
+
+.secondary-menu li a:hover,
+.mini-secondary-menu li a:hover {
+  color: #fff;
+}
+
+/* 검색창 스타일 */
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search__input {
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  border: 0;
+  border-bottom: 1px solid;
+  border-radius: 0;
+  appearance: none;
+  background: none;
+  color: #fff;
+}
+
+.search__submit {
+  position: absolute;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+}
+
+.primary-menu {
+  display: flex;
+  font-size: 1.125rem;
+  flex-wrap: wrap;
+  font-weight: 600;
+}
+
+.functional-menu > .wpml-ls-item a {
+  font-weight: 600;
+  opacity: 0.5;
+  text-decoration: none;
+  transition: opacity 300ms;
+}
+
+.functional-menu > .wpml-ls-item a:hover {
+  opacity: 1;
+}
+
+.functional-menu > .wpml-ls-item:nth-child(1) {
+  margin: 0;
+}
+.functional-menu > .wpml-ls-item:nth-child(1)::after {
+  display: inline-block;
+  width: 1px;
+  height: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  content: "";
+  transform: translate3d(0, 1px, 0);
+  margin: 0 0.5rem;
+}
+
+.functional-menu > .wpml-ls-item:nth-child(2) {
+  margin: 0;
+}
+
+/* 선택된 언어 활성화 class네임으로 선택됨으로 js로 수정해야함 */
+.functional-menu > .wpml-ls-current-language a {
+  /* font-weight: 500; */
+  opacity: 1;
+}
+@media (min-width: 783px) {
+  .menu-item {
+    margin: 0 2rem;
+  }
+}
+
+#menu-item-2353 a:hover,
+#menu-item-2357 a:hover,
+#menu-item-2341 a:hover {
+  /* 및줄 생기기 */
+  border-bottom: 1px solid #000;
+}
+
+/* 미니 헤더 드롭다운 초기 상태 - 숨김 처리 */
+.mini-header__dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #000;
+  transition: transform 500ms, opacity 500ms ease;
+  transform: scaleY(0);
+  transform-origin: top center;
+  opacity: 0;
+}
+
+/* 드롭다운 활성화 시 스타일 - 보임 처리 */
+.mini-header__dropdown.active {
+  display: block;
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+/* tools를 클릭했을 때 나오는 토글 */
+.mini-secondary-menu {
+  /* position: absolute;
+  top: 0;
+  right: 0; */
+  background-color: #000;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  padding: 1rem 0;
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  z-index: 100000;
+  /* animation: collapse 0.5s ease forwards; */
+}
